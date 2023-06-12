@@ -1,0 +1,21 @@
+syntax = "proto3";
+package computeandstorage;
+service EC2Operations {
+ rpc StoreData (StoreRequest) returns (StoreReply) {}
+ rpc AppendData (AppendRequest) returns (AppendReply) {}
+ rpc DeleteFile (DeleteRequest) returns (DeleteReply) {}
+}
+message StoreRequest {
+ string data = 1;
+}
+message StoreReply {
+ string s3uri = 1;
+}
+message AppendRequest {
+ string data = 1;
+}
+message AppendReply {}
+message DeleteRequest {
+ string s3uri = 1;
+}
+message DeleteReply {}

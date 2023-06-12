@@ -1,0 +1,22 @@
+services:
+  appone:
+    image: rbshah/cloud_a1:app1
+    volumes:
+      - .:/home
+    ports:
+      - 6000:6000
+    networks:
+      - cloud
+
+  apptwo:
+    image: rbshah/cloud_a1:app2
+    ports:
+      - 8000:8000
+    volumes_from:
+      - appone:ro
+    networks:
+      - cloud
+  
+networks:
+  cloud:
+    name: cloud
